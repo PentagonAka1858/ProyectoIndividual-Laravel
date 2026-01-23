@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,6 +17,20 @@ class FrutasFactory extends Factory
      */
     public function definition(): array
     {
+        // Lista de frutas para elegir una aleatoria como nombre
+        $lista_fruta = [
+            'Manzana', 'Pera', 'Plátano', 'Naranja', 'Fresa', 'Uva', 'Sandía', 'Melón',
+            'Mango', 'Piña', 'Papaya', 'Kiwi', 'Cereza', 'Durazno', 'Albaricoque',
+            'Ciruela', 'Granada', 'Limón', 'Lima', 'Mandarina',
+            'Pomelo', 'Frambuesa', 'Mora', 'Arándano', 'Grosella',
+            'Higo', 'Dátil', 'Coco', 'Guayaba', 'Maracuyá',
+            'Lichi', 'Rambután', 'Pitahaya', 'Carambola', 'Chirimoya',
+            'Tamarindo', 'Níspero', 'Kumquat', 'Feijoa', 'Mangostán',
+            'Acerola', 'Zapote', 'Caimito', 'Salak', 'Ackee',
+            'Jaca', 'Yaca', 'Longan', 'Pepino dulce'
+        ];
+
+        
         return [
             /*
             $table->string('nombre', 100);
@@ -27,13 +42,14 @@ class FrutasFactory extends Factory
             $table->decimal('precio',12,2);
             $table->foreignId('proveedor_id')->constrained('users')->onUpdate('cascade');
             */
-            'nombre' => fake()->name(),
+            'nombre' => fake()->randomElement($lista_fruta),
             'fecha_recoleccion' => fake()->dateTimeBetween('-1 year', '0 years')->format('Y-m-d'),
             'fecha_caducidad' => fake()->dateTimeBetween('0 years', '+1 years')->format('Y-m-d'),
             'conservacion' => fake()->randomElement(['Frio', 'Ambiente']),
             'origen' => fake()->country(),
             'peso' => fake()->randomFloat(2, 0.1, 20),
             'precio' => fake()->randomFloat(2, 0.1, 20),
+            'proveedor_id' => User::factory(),
             
         ];
     }
