@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    
+    public function frutas()
+    {
+        return $this->hasMany(Fruta::class, 'proveedor_id');
+    }
 }
