@@ -20,12 +20,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/frutas', [FrutaController::class, 'index'])->name('fruta.all');
-    Route::get('/frutas', [FrutaController::class, 'show'])->name('fruta.details');
-    Route::get('/frutas', [FrutaController::class, 'create'])->name('fruta.create');
+    Route::get('/frutas/{id}', [FrutaController::class, 'show'])->name('fruta.details');
+    Route::get('/frutas/crear', [FrutaController::class, 'create'])->name('fruta.create');
     Route::post('/frutas', [FrutaController::class, 'store'])->name('fruta.store');
-    Route::get('/frutas', [FrutaController::class, 'edit'])->name('fruta.edit');
-    Route::put('/frutas', [FrutaController::class, 'update'])->name('fruta.update');
-    Route::get('/frutas', [FrutaController::class, 'destroy'])->name('fruta.destroy');
+    Route::get('/frutas/{id}/editar', [FrutaController::class, 'edit'])->name('fruta.edit');
+    Route::put('/frutas/{id}', [FrutaController::class, 'update'])->name('fruta.update');
+    Route::get('/frutas/{id}/eliminar', [FrutaController::class, 'destroy'])->name('fruta.destroy');
 });
 
 require __DIR__.'/auth.php';
