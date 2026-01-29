@@ -18,14 +18,14 @@ class Fruta extends Model
         'conservacion',
         'origen',
         'peso',
-        'precio',
+        'precio_kg',
         'proveedor_id',
     ];
 
     protected $casts = [
         'fecha_recoleccion' => 'date',
         'fecha_caducidad' => 'date',
-        'peso' => 'decimal:2',
+        'peso_kg' => 'decimal:2',
         'precio' => 'decimal:2',
     ];
 

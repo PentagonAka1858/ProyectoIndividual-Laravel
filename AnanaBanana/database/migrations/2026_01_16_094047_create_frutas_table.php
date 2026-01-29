@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('conservacion', ['Frio', 'Ambiente']);
             $table->string('origen')->nullable(false);
             $table->decimal('peso',12,2);
-            $table->decimal('precio',12,2);
+            $table->decimal('precio_kg',12,2);
             $table->foreignId('proveedor_id')->constrained('users')->onUpdate('cascade');
         });
     }

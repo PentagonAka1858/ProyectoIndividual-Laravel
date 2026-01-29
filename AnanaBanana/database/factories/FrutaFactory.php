@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class FrutasFactory extends Factory
+class FrutaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -48,7 +48,7 @@ class FrutasFactory extends Factory
             'conservacion' => fake()->randomElement(['Frio', 'Ambiente']),
             'origen' => fake()->country(),
             'peso' => fake()->randomFloat(2, 0.1, 20),
-            'precio' => fake()->randomFloat(2, 0.1, 20),
+            'precio_kg' => fake()->randomFloat(2, 1, 20),
             'proveedor_id' => User::factory(),
             
         ];
