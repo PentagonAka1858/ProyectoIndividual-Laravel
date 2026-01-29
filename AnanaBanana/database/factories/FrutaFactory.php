@@ -47,7 +47,7 @@ class FrutaFactory extends Factory
             'fecha_caducidad' => fake()->dateTimeBetween('0 years', '+1 years')->format('Y-m-d'),
             'conservacion' => fake()->randomElement(['Frio', 'Ambiente']),
             'origen' => fake()->country(),
-            'peso' => fake()->randomFloat(2, 0.1, 20),
+            'kg_totales' => fake()->randomFloat(2, 0.1, 20),
             'precio_kg' => fake()->randomFloat(2, 1, 20),
             'proveedor_id' => User::factory(),
             

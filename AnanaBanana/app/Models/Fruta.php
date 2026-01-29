@@ -17,7 +17,7 @@ class Fruta extends Model
         'fecha_caducidad',
         'conservacion',
         'origen',
-        'peso',
+        'kg_totales',
         'precio_kg',
         'proveedor_id',
     ];
@@ -25,8 +25,8 @@ class Fruta extends Model
     protected $casts = [
         'fecha_recoleccion' => 'date',
         'fecha_caducidad' => 'date',
-        'peso_kg' => 'decimal:2',
-        'precio' => 'decimal:2',
+        'kg_totales' => 'decimal:2',
+        'precio_kg' => 'decimal:2',
     ];
 
     // Relationship: A fruta belongs to a user (proveedor)

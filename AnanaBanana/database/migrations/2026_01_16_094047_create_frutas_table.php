@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('fecha_caducidad');
             $table->enum('conservacion', ['Frio', 'Ambiente']);
             $table->string('origen')->nullable(false);
-            $table->decimal('peso',12,2);
+            $table->decimal('kg_totales',12,2);
             $table->decimal('precio_kg',12,2);
             $table->foreignId('proveedor_id')->constrained('users')->onUpdate('cascade');
         });
