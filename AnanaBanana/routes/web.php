@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/frutas', [FrutaController::class, 'index'])->name('fruta.all');
+    Route::get('/frutas', [FrutaController::class, 'index'])->name('fruta.index');
     Route::get('/frutas/{id}', [FrutaController::class, 'show'])->name('fruta.details');
     Route::get('/frutas/crear', [FrutaController::class, 'create'])->name('fruta.create');
     Route::post('/frutas', [FrutaController::class, 'store'])->name('fruta.store');
