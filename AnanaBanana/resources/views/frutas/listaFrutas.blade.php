@@ -9,15 +9,15 @@
     </head>
     <body>
         
+        <div class="mb-3">
+            <a href="{{ route('frutas.create') }}" class="btn btn-success">+ Nueva fruta</a>
+        </div>
+        
         @if($mensaje == 'vacio')
             <div class="alert alert-warning">
                 No hay frutas registrados.
             </div>
         @else
-            <div class="mb-3">
-                <a href="/frutas/crear" class="btn btn-success">+ Nueva fruta</a>
-            </div>
-
             <div class="card">
                 <div class="card-body p-0">
                     <table class="table table-striped table-hover mb-0">
@@ -56,7 +56,10 @@
                                     <td>
                                         <a href="/frutas/{{ $fruta->id }}" class="btn btn-sm btn-info">Ver</a>
                                         <a href="/frutas/{{ $fruta->id }}/editar" class="btn btn-sm btn-warning">Editar</a>
-                                        <a href="/frutas/{{ $fruta->id }}/eliminar" class="btn btn-sm btn-danger">Eliminar</a>
+                                        <a href="/frutas/{{ $fruta->id }}/eliminar" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('¿Estás seguro de que quieres eliminar esta fruta?')">
+                                            Eliminar
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -64,6 +67,11 @@
                     </table>
                 </div>
             </div>
+            
+            <div class="d-flex justify-content-center mt-3">
+                {{ $frutas->links('pagination::bootstrap-5') }}
+            </div>
+            
         @endif
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>

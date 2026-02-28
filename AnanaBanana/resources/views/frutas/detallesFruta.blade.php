@@ -62,8 +62,8 @@
                         <td>{{ $fruta->precio_kg }} €</td>
                     </tr>
                     <tr>
-                        <th>Sueldo Base:</th>
-                        <td><strong class="text-success">{{ $fruta->proveedor_id }}</strong></td>
+                        <th>Proveedor:</th>
+                        <td><strong>{{ $fruta->proveedor->name }}</strong></td>
                     </tr>
                 </table>
             </div>

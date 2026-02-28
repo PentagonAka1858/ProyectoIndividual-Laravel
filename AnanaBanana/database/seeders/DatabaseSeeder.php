@@ -21,11 +21,19 @@ class DatabaseSeeder extends Seeder
         // Create one specific test user
         User::factory()->create([
             'name' => 'Test User',
+            'role' => 'user',
             'email' => 'test@example.com',
         ]);
         
-        // Creamos 99 usuarios aleatorios
-        User::factory(99)->create();
+        // Create one specific admin user
+        User::factory()->create([
+            'name' => 'Admin',
+            'role' => 'admin',
+            'email' => 'admin@example.com',
+        ]);
+        
+        // Creamos 98 usuarios aleatorios
+        User::factory(98)->create();
         
         // Get all users from the database
         $users = User::all();

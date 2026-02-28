@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -31,6 +32,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role',
     ];
 
     /**
@@ -49,5 +51,10 @@ class User extends Authenticatable
     public function frutas()
     {
         return $this->hasMany(Fruta::class, 'proveedor_id');
+    }
+    
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
     }
 }

@@ -19,13 +19,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/frutas', [FrutaController::class, 'index'])->name('fruta.index');
-    Route::get('/frutas/{id}', [FrutaController::class, 'show'])->name('fruta.details');
-    Route::get('/frutas/crear', [FrutaController::class, 'create'])->name('fruta.create');
-    Route::post('/frutas', [FrutaController::class, 'store'])->name('fruta.store');
-    Route::get('/frutas/{id}/editar', [FrutaController::class, 'edit'])->name('fruta.edit');
-    Route::put('/frutas/{id}', [FrutaController::class, 'update'])->name('fruta.update');
-    Route::get('/frutas/{id}/eliminar', [FrutaController::class, 'destroy'])->name('fruta.destroy');
+    Route::get('/frutas', [FrutaController::class, 'index'])->name('frutas.index');
+    Route::get('/frutas/crear', [FrutaController::class, 'create'])->name('frutas.create');
+    Route::get('/frutas/{id}', [FrutaController::class, 'show'])->name('frutas.details');
+    Route::post('/frutas', [FrutaController::class, 'store'])->name('frutas.store');
+    Route::get('/frutas/{id}/editar', [FrutaController::class, 'edit'])->name('frutas.edit');
+    Route::put('/frutas/{id}', [FrutaController::class, 'update'])->name('frutas.update');
+    Route::get('/frutas/{id}/eliminar', [FrutaController::class, 'destroy'])->name('frutas.destroy');
 });
 
 require __DIR__.'/auth.php';
