@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Services\WeatherService;
 
 class ProfileController extends Controller
 {
@@ -16,9 +17,19 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user = $request->user();
+        $weather = null;
+        $adverseWeather = false;
+
+        if ($user->latitud && $user->longitud) {
+            $weatherService = new WeatherService();
+            $weather = $weatherService->getWeather($user->latitud, $user->longitud);
+            if ($weather) {
+                $adverseWeather = $weatherService->isAdverseWeather($weather);
+            }
+        }
+
+        return view('profile.edit', compact('user', 'weather', 'adverseWeather'));
     }
 
     /**
@@ -56,5 +67,18 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+    
+    public function updateLocation(Request $request)
+    {
+        $validated = $request->validate([
+            'latitud'   => 'required|numeric|between:-90,90',
+            'longitud'  => 'required|numeric|between:-180,180',
+            'direccion' => 'required|string',
+        ]);
+
+        $request->user()->update($validated);
+
+        return back()->with('success', 'Ubication saved correctly.');
     }
 }
