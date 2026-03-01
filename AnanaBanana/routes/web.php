@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/frutas', [FrutaController::class, 'index'])->name('frutas.index');
     Route::get('/frutas/crear', [FrutaController::class, 'create'])->name('frutas.create');
     Route::get('/frutas/{id}', [FrutaController::class, 'show'])->name('frutas.details');
