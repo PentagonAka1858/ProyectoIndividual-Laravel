@@ -69,8 +69,8 @@
             </div>
             <div class="card-footer">
                 <a href="/frutas" class="btn btn-secondary">← Volver</a>
-                <a href="/frutaes/{{ $fruta->id }}/editar" class="btn btn-warning">Editar</a>
-                <a href="/frutaes/{{ $fruta->id }}/eliminar" class="btn btn-danger">Eliminar</a>
+                <a href="/frutas/{{ $fruta->id }}/editar" class="btn btn-warning">Editar</a>
+                <a href="/frutas/{{ $fruta->id }}/eliminar" class="btn btn-danger">Eliminar</a>
             </div>
         </div>
     @endif

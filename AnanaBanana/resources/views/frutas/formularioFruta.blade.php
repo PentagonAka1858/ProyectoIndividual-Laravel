@@ -70,6 +70,15 @@
                 </div>
                 
                 <div class="mb-3">
+                    <label for="origen" class="form-label">Origen *</label>
+                    <input type="text" class="form-control @error('origen') is-invalid @enderror" 
+                           name="origen" id="origen" value="{{ old('origen') }}" required>
+                    @error('origen')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+                
+                <div class="mb-3">
                     <label for="kg_totales" class="form-label">Kg en stock *</label>
                     <input type="number" class="form-control @error('kg_totales') is-invalid @enderror" 
                            name="kg_totales" id="kg_totales" value="{{ old('kg_totales') }}" 
@@ -90,14 +99,14 @@
                 </div>
                 
                 <div class="mb-3">
-                    <label for="sexo" class="form-label">Proveedor *</label>
-                    <select class="form-select @error('sexo') is-invalid @enderror" name="sexo" id="sexo" required>
+                    <label for="proveedor_id" class="form-label">Proveedor *</label>
+                    <select class="form-select @error('proveedor_id') is-invalid @enderror" name="proveedor_id" id="proveedor_id" required>
                         <option value="">-- Seleccionar --</option>
                         @foreach ($proveedores as $proveedor)
                             <option value="{{ $proveedor->id }}" {{ old('proveedor_id') == $proveedor->id ? 'selected' : '' }}>{{ $proveedor->name . ', ' . $proveedor->email }}</option>
                         @endforeach
                     </select>
-                    @error('sexo')
+                    @error('proveedor_id')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

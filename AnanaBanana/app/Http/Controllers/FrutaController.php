@@ -44,14 +44,14 @@ class FrutaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         // Recogemos el ID del usuario autenticado
         $usuarioId = Auth::id();
         $fruta = Fruta::find($id);
         
-        if ($fruta != null && $usuarioId != $fruta->proveedor_id) {
-            return redirect()->route('fruta.index');
+        if ($fruta != null && $usuarioId != $fruta->proveedor_id && !$request->user()->isAdmin()) {
+            return redirect()->route('frutas.index');
         }
         
         $mensaje = 'Se ha cargado la fruta';
